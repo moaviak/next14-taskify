@@ -39,12 +39,17 @@ export default clerkMiddleware((auth, req) => {
         const orgSelection = new URL("/select-org", req.url);
         return NextResponse.redirect(orgSelection);
       }
+    }
+  }
+
+  if (isPublicRoute(req) && auth().userId) {
+    if (!auth().orgId) {
+      const orgSelection = new URL("/select-org", req.url);
+      return NextResponse.redirect(orgSelection);
     } else {
-      if (req.nextUrl.pathname !== `/organization/${auth().orgId}`) {
-        return NextResponse.redirect(
-          new URL(`/organization/${auth().orgId}`, req.url)
-        );
-      }
+      return NextResponse.redirect(
+        new URL(`/organization/${auth().orgId}`, req.url)
+      );
     }
   }
 
