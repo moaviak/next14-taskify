@@ -8,19 +8,6 @@ body,
   height: 100%;
 }
 
-/* Clerk Components */
-.cl-cardBox {
-  @apply h-[80vh] w-auto p-4;
-}
-
-.cl-internal-lqfubk {
-  @apply hidden !important;
-}
-
-.cl-footer {
-  @apply hidden !important;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
